@@ -9,8 +9,8 @@ ActiveRecord::Base.establish_connection(
 ActiveRecord::Schema.define do
   
   create_table :songs, :force => true do |songs|
-    songs.column :name, :string
-    songs.column :duration, :integer
+    songs.string :name
+    songs.integer :duration
   end
 
 end

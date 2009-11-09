@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <h1>Song</h1>
+    <%= error_messages_for :song %>
+    <% form_for :song, :url => songs_path do |f| -%>
+    <p><%= label_tag 'song_name' %><br/>
+    <%= f.text_field :name %></p>
+
+    <p><%= label_tag 'song_duration' %><br/>
+    <%= f.text_field :duration %></p>
+    
+    <p>
+      <%= submit_tag 'Add Song' %>
+      or <%= link_to 'cancel', songs_path %>
+    </p>
+    <% end -%> 
+  </body>
+</html>

@@ -2,7 +2,7 @@
   <body>
     <h1>Song</h1>
     <%= error_messages_for :song %>
-    <% form_for :song, :url => songs_path do |f| -%>
+    <% form_for(@song) do |f| -%>
       <%= render :partial => 'form', :locals => { :f => f } %>
     <% end -%> 
   </body>

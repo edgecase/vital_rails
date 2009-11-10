@@ -2,6 +2,8 @@ class Song < ActiveRecord::Base
   
   LONG_SONG = 300
   
+  belongs_to :artist
+  
   validates_presence_of :name, :message => "needs to be included"
   validates_presence_of :duration
   validates_numericality_of :duration

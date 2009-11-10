@@ -1,8 +1,8 @@
 <html>
   <body>
-    <h1>Song</h1>
-    <%= error_messages_for :song %>
-    <% form_for :song, :url => songs_path do |f| -%>
+    <h1>Artist</h1>
+    <%= error_messages_for :artist %>
+    <% form_for(@artist) do |f| -%>
       <%= render :partial => 'form', :locals => { :f => f } %>
     <% end -%> 
   </body>

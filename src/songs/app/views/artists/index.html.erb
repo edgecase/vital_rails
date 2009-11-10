@@ -1,24 +1,21 @@
-<html>
-  <body>
-    <h1>Artist</h1>
-    <% if flash[:success] -%>
-      <h3><%= flash[:success] %></h3>
-    <% end -%>
-    <table border=1>
-      <tr>
-        <th>Name</th>
-      </tr>
-      <% @artists.each do |artist| %>
-        <tr>
-          <td><%= artist.name %></td>
-          <td><%= link_to "show", artist_path(artist.id) %></td>
-          <td><%= link_to "delete", 
-                {:action => "destroy", :id => artist.id }, 
-                :method => :delete %></td>
-          <td><%= link_to "edit", edit_artist_path(artist.id) %></td>
-        </tr>
-      <% end %>
-    </table>
-    <p><%= link_to "New Artist", new_artist_path %></p>
-  </body>
-</html>
+<h2>Artist</h2>
+<% if flash[:success] -%>
+  <h3><%= flash[:success] %></h3>
+<% end -%>
+<table border=1>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% @artists.each do |artist| %>
+    <tr>
+      <td><%= artist.name %></td>
+      <td><%= link_to "show", artist_path(artist.id) %></td>
+      <td><%= link_to "delete", 
+            {:action => "destroy", :id => artist.id }, 
+            :method => :delete %></td>
+      <td><%= link_to "edit", edit_artist_path(artist.id) %></td>
+    </tr>
+  <% end %>
+</table>
+<p><%= link_to "New Artist", new_artist_path %></p>
+  

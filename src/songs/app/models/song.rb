@@ -1,6 +1,9 @@
 class Song < ActiveRecord::Base
   
   LONG_SONG = 300
+
+  named_scope :short, 
+    :conditions => ["duration < ?", LONG_SONG]
   
   belongs_to :artist
   

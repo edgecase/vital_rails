@@ -1,9 +1,5 @@
-<html>
-  <body>
-    <h1>Artist</h1>
-    <%= error_messages_for :artist %>
-    <% form_for :artist, :url => artists_path do |f| -%>
-      <%= render :partial => 'form', :locals => { :f => f } %>
-    <% end -%> 
-  </body>
-</html>
+<h2>Artist</h2>
+<%= error_messages_for :artist %>
+<% form_for :artist, :url => artists_path do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+<% end -%> 

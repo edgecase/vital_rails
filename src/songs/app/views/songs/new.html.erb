@@ -1,9 +1,6 @@
-<html>
-  <body>
-    <h1>Song</h1>
-    <%= error_messages_for :song %>
-    <% form_for :song, :url => songs_path do |f| -%>
-      <%= render :partial => 'form', :locals => { :f => f } %>
-    <% end -%> 
-  </body>
-</html>
+<h2>Song</h2>
+<%= error_messages_for :song %>
+<% form_for :song, :url => songs_path do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+<% end -%> 
+  

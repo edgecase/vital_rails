@@ -21,4 +21,8 @@ class Song < ActiveRecord::Base
     end
   end
 
+  def duration_minutes_seconds
+    [ duration / 60, duration % 60 ]
+  end
+
 end

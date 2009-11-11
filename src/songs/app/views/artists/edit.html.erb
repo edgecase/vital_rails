@@ -1,0 +1,9 @@
+<html>
+  <body>
+    <h1>Artist</h1>
+    <%= error_messages_for :artist %>
+    <% form_for(@artist) do |f| -%>
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    <% end -%> 
+  </body>
+</html>

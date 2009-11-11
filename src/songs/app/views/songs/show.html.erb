@@ -1,5 +1,7 @@
 <h1>Song</h1>
 <p>Name: <%= @song.name %></p>
 <p>Duration: <%= @song.duration %></p>  
+<% if @song.artist -%>
 <p>Artist: <%= @song.artist.name %></p>
+<% end -%>
 <p><%= link_to "Back", songs_url %></p>  

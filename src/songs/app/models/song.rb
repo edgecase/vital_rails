@@ -20,7 +20,7 @@ class Song < ActiveRecord::Base
 
   def no_kids_songs
     if ["Twinkle, Twinkle", "Row, Row, Row"].include?(name)
-      errors.add_to_base("No kids songs allowed") 
+      errors.add(:name, "No kids songs allowed") 
     end
   end
 

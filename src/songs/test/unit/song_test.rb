@@ -40,7 +40,7 @@ class SongTest < ActiveSupport::TestCase
 
     assert ! song.valid?
     assert song.errors.on(:duration)
-    assert_match(/(n't|not).*blank/, song.errors.on(:duration).to_s)
+    assert_match(/n[o']t.*blank/, song.errors.on(:duration).to_s)
   end
 
   test "Duration must be a number" do
@@ -48,7 +48,7 @@ class SongTest < ActiveSupport::TestCase
 
     assert ! song.valid?
     assert song.errors.on(:duration)
-    assert_match(/(n't|not).*number/, song.errors.on(:duration).to_s)
+    assert_match(/n[o']t.*number/, song.errors.on(:duration).to_s)
   end
 
   VALID_OPTIONS = {
@@ -70,6 +70,30 @@ class SongTest < ActiveSupport::TestCase
     assert_validates_presence_of(Song, :name, /needs to be included/)
   end
   
+  test "No Kid Music" do
+    song = Song.new(Song.valid_options.merge(:name => "Row, Row, Row"))
+    assert_errors_on(song, :name, /kid/)
+  end
+
+  test "Duration Converts to Minutes and Seconds" do
+    song = Song.new(Song.valid_options)
+    assert_equal [3, 30], song.duration_minutes_seconds
+  end
+
+  test "Finding Long Song" do
+    # Given
+    Song.create!(:name => "Short1", :duration => 100)
+    Song.create!(:name => "Short2", :duration => 300)
+    Song.create!(:name => "Long1", :duration => 301)
+    Song.create!(:name => "Long2", :duration => 400)
+
+    # When
+    songs = Song.find_long_songs
+
+    # Then
+    assert_equal ['Long1', 'Long2'], songs.map { |s| s.name }.sort
+  end
+
   private
 
   def assert_errors_on(obj, field, pattern)
@@ -78,13 +102,9 @@ class SongTest < ActiveSupport::TestCase
     assert_match(pattern, obj.errors.on(field).to_s) if pattern
   end
 
-  def assert_validates_presence_of(klass, field, pattern=/(n't|not).*blank/)
+  def assert_validates_presence_of(klass, field, pattern=/n[o']t.*blank/)
     instance = klass.new(klass.valid_options.merge(field => nil))
     assert_errors_on(instance, field, pattern)
   end
 
-  test "Duration Converts to Minutes and Seconds" do
-    song = Song.new(Song.valid_options)
-    assert_equal [3, 30], song.duration_minutes_seconds
-  end
 end

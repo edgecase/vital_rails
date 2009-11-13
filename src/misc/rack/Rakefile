@@ -1,0 +1,11 @@
+task :simple do
+  sh "rackup simple.ru -p 3001"
+end
+
+task :time_server do
+  sh "rackup time_server.ru -p 3001"
+end
+
+task :rack do
+  sh "rackup rack.ru -p 3001"
+end

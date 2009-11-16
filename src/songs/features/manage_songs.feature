@@ -40,6 +40,6 @@ Feature: Manage songs
       |Unity            |11      |
       |The Parts of Ruby|12      |
     And I am on the "Unity" song page
-    Then I should see "Unityx"
+    Then I should see "Unity"
     And I should see "11"
     And I should not see "The Parts of Ruby"

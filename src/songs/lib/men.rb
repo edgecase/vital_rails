@@ -1,3 +1,5 @@
+# Example middleware for Rack demo
+
 class Men
   def initialize(app)
     @app = app
